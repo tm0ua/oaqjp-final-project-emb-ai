@@ -9,14 +9,13 @@ def emotion_detector(text_to_analyse):
 
     formatted_text = json.loads(response.text)['emotionPredictions'][0]['emotion']
 
-    last_value = 0
+    largest_value = 0
     dominant_emotion = ''
 
     for key, value in formatted_text.items():
-        if value > last_value:
+        if value > largest_value:
             dominant_emotion = key
-        
-        last_value = value
+            largest_value = value
 
     formatted_text['dominant_emotion'] = dominant_emotion
 
